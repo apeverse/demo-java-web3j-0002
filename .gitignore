@@ -5,7 +5,9 @@ secret.*
 artifacts
 cache
 single
+
 target
+keystore
 
 gasreport-*
 .env
