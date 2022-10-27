@@ -18,13 +18,13 @@ public class SignUtils {
     public static final String SIGN_NODE_PREFIX = "Get latest divident for DID node: ";
 
 
-    public static List<String> getRecoverAddressFromSignature(String signature, String message, String signPrefix) {
+    public static List<String> getRecoverAddressFromSignature(String signature, String node, String signPrefix) {
         if (StringUtils.isNotBlank(signPrefix)) {
-            message = StringUtils.join(signPrefix, message);
+            node = StringUtils.join(signPrefix, node);
         }
         List<String> resultList = Lists.newArrayList();
-        String prefix = PERSONAL_MESSAGE_PREFIX + message.length();
-        byte[] msgHash = Hash.sha3((prefix + message).getBytes());
+        String prefix = PERSONAL_MESSAGE_PREFIX + node.length();
+        byte[] msgHash = Hash.sha3((prefix + node).getBytes());
 
         byte[] signatureBytes = Numeric.hexStringToByteArray(signature);
         byte v = signatureBytes[64];
